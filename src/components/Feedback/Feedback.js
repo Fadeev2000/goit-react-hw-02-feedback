@@ -17,6 +17,16 @@ class Feedback extends Component {
         ))
     };
 
+    countTotalFeedback = () => {
+        const arrNumFeedback = Object.values(this.state);
+
+        return arrNumFeedback.reduce((sum, current) => (sum + current));
+    };
+
+    countPositiveFeedbackPercentage = () => (
+        Math.floor(100 * this.state.good / this.countTotalFeedback())
+    );
+
     render() {
         const arrButtons = Object.keys(this.state);
 
@@ -29,7 +39,11 @@ class Feedback extends Component {
                     }}>{firstUppercase(button)}</button>
                 ))}
 
-                <Statistics state={this.state}/>
+                <Statistics
+                    state={this.state}
+                    countTotalFeedback={this.countTotalFeedback}
+                    countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage}
+                />
             </>
         );
     }
