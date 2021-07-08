@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import css from './FeedbackOptions.module.css';
 import firstUppercase from '../../commons/firstUpp';
 
 function FeedbackOptions({options, onLeaveFeedback}) {
@@ -7,7 +8,7 @@ function FeedbackOptions({options, onLeaveFeedback}) {
     return (
         <>
             {arrButtons.map(button => (
-                <button type="button" key={button} onClick={() => onLeaveFeedback(button)}>{firstUppercase(button)}</button>
+                <button className={css.button} type="button" key={button} onClick={() => onLeaveFeedback(button)}>{firstUppercase(button)}</button>
             ))}
         </>
     );

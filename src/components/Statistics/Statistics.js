@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import css from './Statistics.module.css';
 import firstUppercase from '../../commons/firstUpp';
 
 function Statistics({
@@ -11,7 +11,7 @@ function Statistics({
 
     return (
         <>
-            <ul>
+            <ul className={css.ul}>
                 {arrItems.map(item => (
                     <li key={item}>{firstUppercase(item)}: {state[item]}</li>
                 ))}
