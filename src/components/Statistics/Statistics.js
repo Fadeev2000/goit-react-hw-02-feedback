@@ -4,20 +4,19 @@ import firstUppercase from '../../commons/firstUpp';
 
 function Statistics({
     state,
-    countTotalFeedback,
-    countPositiveFeedbackPercentage
+    total,
+    positivePercentage
 }) {
     const arrItems = Object.keys(state);
 
     return (
         <>
-            <h3>Statistics</h3>
             <ul>
                 {arrItems.map(item => (
                     <li key={item}>{firstUppercase(item)}: {state[item]}</li>
                 ))}
-                <li>Total: {countTotalFeedback()}</li>
-                <li>Positive feedback: {countPositiveFeedbackPercentage()}%</li>
+                <li>Total: {total()}</li>
+                <li>Positive feedback: {positivePercentage()}%</li>
             </ul>
         </>
     );
@@ -25,8 +24,8 @@ function Statistics({
 
 Statistics.propTypes = {
     state: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
-    countTotalFeedback: PropTypes.func.isRequired,
-    countPositiveFeedbackPercentage: PropTypes.func.isRequired
+    total: PropTypes.func.isRequired,
+    positivePercentage: PropTypes.func.isRequired
 };
 
 export default Statistics;
